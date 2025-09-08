@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dts12yg34cyxn"]
+[gd_scene load_steps=10 format=3 uid="uid://dts12yg34cyxn"]
 
 [ext_resource type="Texture2D" uid="uid://jgyiyjprhg13" path="res://jpeg (5).png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://d32dwed5exyjd" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="FontFile" uid="uid://b05thj7kfy38b" path="res://VT323-Regular.ttf" id="2_7vrkn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vrkn"]
@@ -8,6 +9,9 @@ texture = ExtResource("1_06t4h")
 modulate_color = Color(0.77, 0.77, 0.77, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fu7sn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(0.845094, 0.868455, 0.109976, 0.313726)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(0.68, 1, 0.781333, 0)
@@ -18,6 +22,12 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0.407843, 0.803922, 0.717647, 0.203922)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu7sn"]
+bg_color = Color(0.843137, 0.866667, 0.109804, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
+bg_color = Color(0.843137, 0.866667, 0.109804, 0.313726)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -30,6 +40,7 @@ offset_right = 5.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fu7sn")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -82,26 +93,36 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.913725, 0.921569, 0.227451, 1)
 theme_override_colors/font_color = Color(0, 0.929412, 0.552941, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "START GAME"
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.913725, 0.921569, 0.227451, 1)
 theme_override_colors/font_color = Color(0, 0.929412, 0.552941, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "Options"
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0.913725, 0.921569, 0.227451, 1)
 theme_override_colors/font_color = Color(0, 0.929412, 0.552941, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxFlat_jix8l")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
 text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
