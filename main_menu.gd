@@ -11,8 +11,7 @@ func _ready() -> void:
 	main_buttons.visible = false
 	options.visible = false
 
-func _process(delta: float) -> void:
-	pass
+
 
 
 func _unhandled_input(event: InputEvent) -> void:
