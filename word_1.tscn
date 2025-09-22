@@ -62,19 +62,13 @@ texture = ExtResource("1_ai25l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_hhx8g")
-autoplay = true
-bus = &"Music"
-script = ExtResource("8_juq12")
+[node name="pauseMenu" type="Panel" parent="CanvasLayer"]
+offset_left = -70.0
+offset_top = -35.0
+offset_right = 1226.0
+offset_bottom = 682.0
 
-[node name="pauseMenu" type="Panel" parent="."]
-offset_left = 3.0
-offset_top = 8.0
-offset_right = 1168.0
-offset_bottom = 637.0
-
-[node name="submenu" type="VBoxContainer" parent="pauseMenu"]
+[node name="submenu" type="VBoxContainer" parent="CanvasLayer/pauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,7 +82,7 @@ offset_bottom = 56.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="resume" type="Button" parent="pauseMenu/submenu"]
+[node name="resume" type="Button" parent="CanvasLayer/pauseMenu/submenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.913725, 0.921569, 0.227451, 1)
@@ -99,7 +93,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_juq12")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wul5w")
 text = "Resume"
 
-[node name="settings" type="Button" parent="pauseMenu/submenu"]
+[node name="settings" type="Button" parent="CanvasLayer/pauseMenu/submenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.913725, 0.921569, 0.227451, 1)
@@ -110,7 +104,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jsxu3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wul5w")
 text = "Options"
 
-[node name="sair" type="Button" parent="pauseMenu/submenu"]
+[node name="sair" type="Button" parent="CanvasLayer/pauseMenu/submenu"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0.913725, 0.921569, 0.227451, 1)
@@ -121,7 +115,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_b5gqg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wul5w")
 text = "Sair"
 
-[node name="Options" type="Panel" parent="pauseMenu"]
+[node name="Options" type="Panel" parent="CanvasLayer/pauseMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -136,7 +131,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ufyn")
 
-[node name="AudioControl" type="HSlider" parent="pauseMenu/Options"]
+[node name="AudioControl" type="HSlider" parent="CanvasLayer/pauseMenu/Options"]
 layout_mode = 0
 offset_left = 155.0
 offset_top = 133.0
@@ -151,7 +146,7 @@ value = 1.0
 script = ExtResource("4_0dxk0")
 audio_bus_name = "Music"
 
-[node name="back" type="Label" parent="pauseMenu/Options"]
+[node name="back" type="Label" parent="CanvasLayer/pauseMenu/Options"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.336124
@@ -168,7 +163,7 @@ theme_override_font_sizes/font_size = 60
 text = "Options"
 metadata/_edit_use_anchors_ = true
 
-[node name="Exit" type="Button" parent="pauseMenu/Options"]
+[node name="Exit" type="Button" parent="CanvasLayer/pauseMenu/Options"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -191,7 +186,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_h5q64")
 text = "Voltar"
 script = ExtResource("5_juq12")
 
-[node name="FullscreenControl" type="CheckButton" parent="pauseMenu/Options"]
+[node name="FullscreenControl" type="CheckButton" parent="CanvasLayer/pauseMenu/Options"]
 layout_mode = 0
 offset_left = 157.0
 offset_top = 248.0
@@ -200,11 +195,17 @@ offset_bottom = 332.0
 text = "FullScreen"
 script = ExtResource("5_bmcjl")
 
-[connection signal="pressed" from="pauseMenu/submenu/resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="pauseMenu/submenu/resume" to="." method="resume"]
-[connection signal="pressed" from="pauseMenu/submenu/settings" to="." method="settings"]
-[connection signal="pressed" from="pauseMenu/submenu/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="pauseMenu/submenu/sair" to="." method="_on_sair_pressed"]
-[connection signal="pressed" from="pauseMenu/submenu/sair" to="." method="handle_escape"]
-[connection signal="value_changed" from="pauseMenu/Options/AudioControl" to="pauseMenu/Options/AudioControl" method="_on_value_changed"]
-[connection signal="toggled" from="pauseMenu/Options/FullscreenControl" to="pauseMenu/Options/FullscreenControl" method="_on_toggled"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hhx8g")
+autoplay = true
+bus = &"Music"
+script = ExtResource("8_juq12")
+
+[connection signal="pressed" from="CanvasLayer/pauseMenu/submenu/resume" to="." method="resume"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/submenu/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/submenu/settings" to="." method="settings"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/submenu/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/submenu/sair" to="." method="sair"]
+[connection signal="value_changed" from="CanvasLayer/pauseMenu/Options/AudioControl" to="CanvasLayer/pauseMenu/Options/AudioControl" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/Options/Exit" to="." method="handle_escape"]
+[connection signal="toggled" from="CanvasLayer/pauseMenu/Options/FullscreenControl" to="CanvasLayer/pauseMenu/Options/FullscreenControl" method="_on_toggled"]
