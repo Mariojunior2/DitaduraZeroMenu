@@ -1,7 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://7lhs0bvgpipi"]
+[gd_scene load_steps=18 format=3 uid="uid://7lhs0bvgpipi"]
 
 [ext_resource type="Script" uid="uid://btdokps4a08mh" path="res://word_1.gd" id="1_4wdit"]
-[ext_resource type="Texture2D" uid="uid://jgyiyjprhg13" path="res://jpeg (5).png" id="1_ai25l"]
 [ext_resource type="FontFile" uid="uid://b05thj7kfy38b" path="res://VT323-Regular.ttf" id="3_f6pkk"]
 [ext_resource type="Script" uid="uid://cofkkni2x08v7" path="res://audio_control.gd" id="4_0dxk0"]
 [ext_resource type="AudioStream" uid="uid://bumyvjxhmejuj" path="res://musica.mp3" id="4_hhx8g"]
@@ -52,13 +51,8 @@ corner_radius_bottom_left = 16
 shadow_color = Color(0.407843, 0.803922, 0.717647, 0.203922)
 shadow_offset = Vector2(0, 3.41)
 
-[node name="word1" type="Node2D"]
+[node name="submenu" type="Node2D"]
 script = ExtResource("1_4wdit")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 329.5)
-scale = Vector2(0.755208, 0.639648)
-texture = ExtResource("1_ai25l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

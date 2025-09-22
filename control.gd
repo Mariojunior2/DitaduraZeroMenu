@@ -1,4 +1,5 @@
-extends Node2D
+extends Control
+
 
 @onready var pause_menu = $CanvasLayer/pauseMenu
 @onready var submenu = $CanvasLayer/pauseMenu/submenu
@@ -39,7 +40,7 @@ func settings():
 
 func sair():
 	get_tree().paused = false
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func toggle_pause():
 	game_paused = not game_paused
