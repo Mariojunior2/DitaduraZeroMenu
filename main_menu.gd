@@ -13,7 +13,6 @@ func _ready() -> void:
 
 
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if not titulo_ativo:
 		return
